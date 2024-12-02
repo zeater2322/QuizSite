@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>猜歌</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input id="registerUsername" type="text" placeholder="Name">
+                <input id="registerEmail" type="email" placeholder="Email">
+                <input id="registerPassword" type="password" placeholder="Password">
+                <span id="registerMessage"></span>
+                <button type="button" onclick="register()">註冊</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input id="loginEmail" type="email" placeholder="Email">
+                <input id="loginPassword"type="password" placeholder="Password">
+                <p id="loginMessage" ></p>
+                <a href="#">忘記密碼?</a>
+                <button type="button" onclick="login()">登入</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>歡迎回來!</h1>
+                    <p>請輸入您的資料來使用網站功能!</p>
+                    <button class="hidden" id="login">登入頁面</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>歡迎光臨!</h1>
+                    <p>趕快註冊屬於您的帳號來使用網站功能!</p>
+                    <button id="register" onclick="register()">註冊頁面</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="script1.js"></script>
+</body>
+
+</html>

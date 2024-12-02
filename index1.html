@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜題網站</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.2.4/fabric.min.js"></script>
+</head>
+<body>
+    <div class="top">
+        <a href="javascript:history.go(-1)" id="return_icon"><img src="return_icon1.png"></a>
+        <button id="savebtn">存檔</button>
+        <span id="editor">編輯者 : </span>
+    </div>
+    <div id="itemflex">
+        <div class="container">
+            <div class="sidebar" id="sidebar">
+            <button class="add-slide-btn" id="addSlideBtn">+ 新增幻燈片</button>
+            <div id="slidesList"></div>
+            </div>
+            <div class="main-content">
+            <div class="slide-editor" id="slideEditor"></div>
+            </div>
+        </div>
+        <div id="quiz-app">
+            <h1>出題</h1>
+            <h2>題目種類:</h2>
+            <div class="quiztype">
+                <input type="radio" class="btn-check" name="options" id="option1" checked>
+                <label class="btn btn-secondary" for="option1">單選題</label>
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" >
+                <label class="btn btn-secondary" for="option2">填空題</label>
+            </div>
+            <div id="creator-section">
+                <h3>題目:</h3>
+                <input type="text" id="question-input" placeholder="輸入題目">
+                <h3 id="optiontext">選項:</h3>
+                <div id="single-choice-container">
+                    <div id="options"></div>
+                    <button id="add-option">新增選項</button><br><br>
+                    <h3>答案:</h3>
+                    <input type="text" id="sigle-choice-answer-input" placeholder="輸入答案(請填入第幾個選項)">
+                </div>
+                <div id="fill-in-the-blank-container" style="display: none;">
+                    <h3>答案:</h3>
+                    <input type="text" id="answer-input" placeholder="輸入答案">
+                </div>    
+                <div id="timeLimitContainer">
+                    <h2>答題時間限制</h2>
+                    <input id="timeLimit" type="number" max="300" style="flex: 1; margin-right: 5px;">
+                    <span>seconds</span>
+                </div>
+                <a href="quiz.html" id="start-quiz">開始遊戲</a>
+            </div>
+        </div>
+    </div>    
+    <script src="script.js"></script>
+    <script src="script1.js"></script>
+</body>
+</html>

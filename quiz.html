@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>房間倒數計時器</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div id="joinForm">
+        房間ID: <input type="text" id="roomId">
+        <button onclick="joinRoom()">加入房間</button>
+    </div>
+
+    <div id="room" class="hidden">
+        <h2>房間: <span id="currentRoom"></span></h2>
+        <p>目前人數: <span id="userCount">0</span></p>
+        <button id="startBtn" class="hidden" onclick="startCountdown()">開始倒數</button>
+        <h1 id="countdown"></h1>
+    </div>
+
+    <script>
+        const socket = io();
+        let currentRoomId = '';
+
+        function joinRoom() {
+            currentRoomId = document.getElementById('roomId').value;
+            if (currentRoomId) {
+                socket.emit('joinRoom', currentRoomId);
+                document.getElementById('joinForm').classList.add('hidden');
+                document.getElementById('room').classList.remove('hidden');
+                document.getElementById('currentRoom').textContent = currentRoomId;
+            }
+        }
+
+        function startCountdown() {
+            socket.emit('startCountdown', currentRoomId);
+            document.getElementById('startBtn').setAttribute('disabled', 'true');
+        }
+
+        // 監聽事件
+        socket.on('userJoined', (data) => {
+            document.getElementById('userCount').textContent = data.totalUsers;
+            if (data.isHost) {
+                document.getElementById('startBtn').classList.remove('hidden');
+            }
+        });
+
+        socket.on('userLeft', (data) => {
+            document.getElementById('userCount').textContent = data.totalUsers;
+        });
+
+        socket.on('countdown', (count) => {
+            document.getElementById('countdown').textContent = count;
+        });
+
+        socket.on('countdownComplete', () => {
+            document.getElementById('countdown').textContent = '倒數完成！';
+            document.getElementById('startBtn').removeAttribute('disabled');
+        });
+       
+    </script>
+</body>
+</html>
